@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>sonam yadav - Portfolio </title>
+
+<style>
+  /* ---------- Basic layout ---------- */
+  :root{
+    --bg:#0f1720;
+    --card:#0b1220;
+    --muted:#94a3b8;
+    --accent:#06b6d4;
+    --white:#ffffff;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background:linear-gradient(180deg,#071022 0%, #0f1720 100%);
+    color:var(--white);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    line-height:1.45;
+  }
+
+  /* ---------- Header / Nav ---------- */
+  header{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:14px 22px;
+    background:#071022cc;
+    position:sticky;
+    top:0;
+    z-index:50;
+    border-bottom:1px solid rgba(255,255,255,0.03);
+  }
+ /* Home icon (left) + name (top-left styled) */
+  .home-link{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:var(--white);
+    text-decoration:none;
+  }
+  .home-link img{ width:28px; height:28px; display:block; }
+  #site-name{
+    font-weight:700;
+    font-size:20px;
+    letter-spacing:0.2px;
+  }
+
+  /* Navbar links on the right */
+  nav{
+    margin-left:auto;
+    display:flex;
+    gap:18px;
+    align-items:center;
+  }
+  nav a{
+    color:var(--white);
+    text-decoration:none;
+    padding:8px 6px;
+    border-radius:6px;
+    font-size:16px;
+  }
+  /* On hover: underline + bold exactly as Coursera wants */
+  nav a:hover{
+    text-decoration:underline;
+    font-weight:700;
+  }
+/* ---------- Page sections ---------- */
+  main{max-width:1000px;margin:26px auto;padding:0 18px;}
+
+  section{
+    margin:20px 0;
+    background:transparent;
+  }
+
+  h2{
+    margin:0 0 14px 0;
+    font-size:22px;
+    color:var(--accent);
+  }
+
+  /* ---------- About ---------- */
+  .about{
+    display:flex;
+    gap:20px;
+    align-items:center;
+    background:linear-gradient(90deg, rgba(255,255,255,0.02), transparent);
+    padding:18px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,0.03);
+  }
+  .profile-left{
+    width:190px;
+    text-align:center;
+  }
+  /* Circular profile picture: uses local file yakshita.png you will upload */
+  .profile-pic{
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    object-fit:cover;
+    display:block;
+    margin:0 auto 10px auto;
+    border:4px solid rgba(255,255,255,0.06);
+    background:linear-gradient(180deg,#0b1220,#142231);
+  }
+.about-text{
+    color:var(--white);
+    font-size:15px;
+  }
+
+  /* ---------- Skills ---------- */
+  .skills-grid{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  .skill-card{
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:10px 12px;
+    border-radius:10px;
+    min-width:190px;
+    border:1px solid rgba(255,255,255,0.03);
+  }
+  .skill-card img{ width:40px; height:40px; object-fit:contain; }
+  .skill-card p{ margin:0; font-weight:600; color:var(--white); }
+
+  /* ---------- Projects ---------- */
+  .projects{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:12px;
+  }
+  .project{
+    padding:14px;
+    border-radius:10px;
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border:1px solid rgba(255,255,255,0.03);
+  }
+.project h3{ margin:0 0 8px 0; color:var(--accent); }
+  .project p{ margin:0; color:var(--muted); }
+
+  /* ---------- Recommendations ---------- */
+  #all_recommendations{
+    margin-top:10px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .recommendation{
+    background:linear-gradient(180deg,#0b1220,#06101a);
+    border:1px solid rgba(255,255,255,0.03);
+    padding:12px;
+    border-radius:8px;
+    color:var(--white);
+  }
+
+  /* textarea + button */
+  #new_recommendation{
+    width:100%;
+    min-height:90px;
+    margin-top:10px;
+    padding:10px;
+    border-radius:8px;
+    border:1px solid rgba(255,255,255,0.06);
+    background:transparent;
+    color:var(--white);
+    resize:vertical;
+  }
+  .btn{
+    display:inline-block;
+    margin-top:10px;
+    padding:10px 14px;
+    border-radius:8px;
+    background:var(--accent);
+    color:#022;
+    font-weight:700;
+    border:none;
+ cursor:pointer;
+  }
+
+  /* small helper for screenshots: visible focus outlines */
+  a:focus, button:focus, textarea:focus, input:focus{
+    outline:3px solid rgba(6,182,212,0.12);
+    outline-offset:2px;
+  }
+
+  /* Responsive */
+  @media (max-width:720px){
+    .about{ flex-direction:column; text-align:center; }
+    nav{ gap:10px; }
+  }
+</style>
+</head>
+
+<body>
+<!-- ---------- Header / Navigation ---------- -->
+  <header>
+  <!-- Only your name stays on the left -->
+  <div id="site-name">B Yakshita</div>
+
+  <nav>
+      <!-- Home icon moved here -->
+      <a href="#about">
+        <img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" 
+             alt="Home" style="width:22px; vertical-align:middle;">
+      </a>
+
+      <a href="#about">About</a>
+      <a href="#projects">Project details</a>
+      <a href="#skills">Skills</a>
+      <a href="#recommendations">Recommendations</a>
+  </nav>
+</header>
+
+  <main>
+
+    <!-- ========== ABOUT (includes profile image yakshita.png) ========== -->
+    <section id="about" class="about">
+      <div class="profile-left">
+        <!-- IMPORTANT: put your yakshita.png file in same folder as this HTML -->
+        <img src="image.png" alt="sonam yadav" class="profile-pic" id="profile-pic">
+        <div style="color:var(--muted); font-size:13px;">CS Student • Aspiring Developer</div>
+      </div>
+
+      <div class="about-text">
+        <h2 style="color:var(--white); margin-top:0;">About Me</h2>
+        <p><strong>sonam yadav</strong></p>
+        <p>I am a motivated CS student with a strong interest in technology and innovation. I enjoy learning new concepts, building practical skills, and working on ideas that solve real problems. I'm focused on developing myself through consistent learning and hands-on experience, and I'm open to opportunities that help me grow as a future tech professional.</p>
+      </div>
+    </section>
+<!-- ========== SKILLS ========== -->
+    <section id="skills">
+      <h2>Skills</h2>
+
+      <div class="skills-grid" id="skills-grid">
+        <!-- Python -->
+        <div class="skill-card">
+          <img src="https://cdn.simpleicons.org/python/3776AB" alt="Python icon">
+          <p>Python</p>
+        </div>
+
+        <!-- MySQL -->
+        <div class="skill-card">
+          <img src="https://cdn.simpleicons.org/mysql/4479A1" alt="MySQL icon">
+          <p>MySQL</p>
+        </div>
+
+        <!-- C (simpleicons) -->
+        <div class="skill-card">
+          <img src="https://cdn.simpleicons.org/c/4883B7" alt="C icon">
+          <p>C Programming</p>
+        </div>
+
+        <!-- HTML5 official shield (use png fallback if needed) -->
+        <div class="skill-card">
+          <img src="https://cdn.simpleicons.org/html5/E34F26" alt="HTML5 icon">
+          <p>HTML</p>
+        </div>
+
+        <!-- CSS3 (use reliable png fallback if svg fails) -->
+        <div class="skill-card">
+          <img src="https://icons.iconarchive.com/icons/graphics-vibe/developer/256/css-3-icon.png" alt="CSS3 icon">
+          <p>CSS</p>
+        </div>
+      </div>
+    </section>
+
+<!-- ========== PROJECTS ========== -->
+    <section id="projects">
+      <h2>Project details</h2>
+
+      <div class="projects">
+        <div class="project">
+          <h3>Personal Portfolio Website</h3>
+          <p>A responsive portfolio website built using HTML, CSS, and JavaScript to showcase profile, skills, projects, and recommendations.</p>
+        </div>
+
+        <div class="project">
+          <h3>Student Result Management System</h3>
+          <p>A Python + MySQL based system to store, update, and display student results. Includes scripts for adding and querying student records.</p>
+        </div>
+
+        <div class="project">
+          <h3>Basic Calculator App</h3>
+          <p>A simple calculator application implemented in Python to perform basic arithmetic operations with a clean user interface.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== RECOMMENDATIONS ========== -->
+    <section id="recommendations">
+      <h2>Recommendations</h2>
+
+      <!-- existing recommendations (3 custom sentences as chosen Option A) -->
+      <div id="all_recommendations">
+        <div class="recommendation"><p>"Yakshita learns quickly and stays dedicated."</p></div>
+        <div class="recommendation"><p>"She is disciplined, focused, and consistent."</p></div>
+        <div class="recommendation"><p>"Her curiosity and hard work help her excel."</p></div>
+      </div>
+
+      <h3 style="margin-top:14px;">Add a new recommendation</h3>
+      <textarea id="new_recommendation" placeholder="Write your recommendation here..."></textarea>
+      <br>
+      <!-- Button triggers addRecommendation() and must show built-in alert popup -->
+      <button class="btn" onclick="addRecommendation()">Submit Recommendation</button>
+    </section>
+</main>
+
+  <!-- ---------- Scripts (inline) ---------- -->
+  <script>
+    /* Add new recommendation and show the default JS alert (Coursera requires alert popup) */
+    function addRecommendation(){
+      var input = document.getElementById('new_recommendation');
+      var list  = document.getElementById('all_recommendations');
+
+      if(!input) return;
+      var text = input.value.trim();
+      if(text === "") return;
+
+      // create element to append
+      var box = document.createElement('div');
+      box.className = 'recommendation';
+      box.innerHTML = '<p>"' + escapeHtml(text) + '"</p>';
+      list.appendChild(box);
+
+      // clear input
+      input.value = '';
+
+      // Coursera-required popup (native alert)
+      alert("Thank you for leaving a recommendation!");
+    }
+
+    // small helper to prevent simple HTML injection
+    function escapeHtml(str) {
+      return str.replace(/[&<>"'\/]/g, function (s) {
+        var entityMap = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;", "/": "&#x2F;" };
+        return entityMap[s];
+      });
+    }
+  </script>
+
+</body>
+</html>
